@@ -1,0 +1,12 @@
+rasterio[s3]~=1.3.6
+shapely~=2.0.1
+geopandas~=0.12.2
+numpy~=1.23.5
+boto3~=1.26.82
+matplotlib
+requests
+scikit-image
+retry
+xmltodict
+pygeos
+pyyaml

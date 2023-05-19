@@ -1,0 +1,14 @@
+# MAIN settings
+#prefire_product: ./../S2A_MSIL2A_20230305T000221_N0509_R030_T55HGD_20230305T024055.SAFE.zip
+#postfire_product: ./../S2B_MSIL2A_20230320T000229_N0509_R030_T55HGD_20230320T013457.SAFE.zip
+prefire_product: "2023-03-05"
+postfire_product: "2023-03-20"
+aoi:
+    ll: [-33.20518, 148.79697]
+    ur: [-32.64876, 150.05036]
+    place_name: "Alpha Road Tambaroora, AUS"
+
+# EXPERT settings
+segmentation:
+  th: 0.1  # deltaNBR value above which a pixel is considered burnt
+  mmu: 1000000  # minimum mapping unit for segmentation of burnt areas
