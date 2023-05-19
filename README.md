@@ -49,3 +49,8 @@ Launch Burnt Area Mapper script:
 cd /python-app/src
 python main.py --config /python-app/config.yaml
 ```
+
+Optional: **If you want to use a different AOI/dates**, you can modify the config YAML from within the container using nano editor:
+```
+nano /python-app/config.yaml
+```

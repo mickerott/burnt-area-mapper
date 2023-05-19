@@ -3,6 +3,7 @@ import shutil
 import warnings
 from copy import copy, deepcopy
 from pathlib import Path
+from pprint import pprint
 
 import geopandas as gpd
 import numpy as np
@@ -231,8 +232,16 @@ if __name__ == "__main__":
     )
     args, _ = parser.parse_known_args()
 
-    with open(args.config, "r") as f:
+    config_path = args.config
+
+    print(
+        f"Reading config file: {config_path}"
+    )
+    with open(config_path, "r") as f:
         config = yaml.safe_load(f)
+    pprint(
+        config
+    )
 
     prefire_product = config["prefire_product"]
     postfire_product = config["postfire_product"]
