@@ -9,6 +9,9 @@ aoi:
     place_name: "Alpha Road Tambaroora, AUS"
 
 # EXPERT settings
+algorithm_names: ["NBR", "MIRBI", "BAIS2"]  # confidence threshold applied when 2 or 3 of these are given: ["NBR", "MIRBI", "BAIS2"]
+mask_clouds: true
 segmentation:
   th: 0.1  # deltaNBR value above which a pixel is considered burnt
   mmu: 1000000  # minimum mapping unit for segmentation of burnt areas
+min_confidence: 0.67  # 0.67: at least 67% of BAMs (e.g. 2 out of 3) burnt to be considered for final map

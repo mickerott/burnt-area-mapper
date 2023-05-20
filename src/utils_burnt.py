@@ -1,4 +1,3 @@
-from copy import deepcopy
 from pathlib import Path
 
 import geopandas as gpd
@@ -15,29 +14,19 @@ from skimage.morphology import (
 )
 
 
-def segment_burnt_area_dnbr(delta_nbr, th):
-    # segment burnt area: apply threshold, morphological filtering
-
-    # apply threshold
-    bam = deepcopy(delta_nbr)
-    bam[delta_nbr <= th] = np.nan
-    bam[~np.isnan(bam)] = 1
-    bam[np.isnan(bam)] = 0
-
-    # morphological filtering of raster
+def segment_burnt_area_dnbr(bam):
+    # segment burnt area: morphological filtering of raster
     bam = binary_opening(bam)
     bam = binary_closing(bam)
     bam = binary_erosion(bam)
     bam = binary_erosion(bam)
-    bam = binary_erosion(bam)
-    bam = binary_dilation(bam)
     bam = binary_dilation(bam)
     bam = binary_dilation(bam)
 
     return bam
 
 
-def export_burnt_map(raster_path, vector_file, mmu, image_out, place_name=None):
+def export_burnt_map(raster_path, vector_file, mmu, image_out, date, place_name=None):
     # export map
 
     # read files
@@ -84,9 +73,9 @@ def export_burnt_map(raster_path, vector_file, mmu, image_out, place_name=None):
     # add title and axis labels
     crs_name = vector_file.crs.name
     if place_name is not None:
-        title = f"Burnt Area Map for {place_name} ({crs_name})"
+        title = f"Burnt Area Map from {date} for {place_name} ({crs_name})"
     else:
-        title = f"Burnt Area Map ({crs_name})"
+        title = f"Burnt Area Map from {date} ({crs_name})"
     ax.set_title(title)
     ax.set_xlabel("East")
     ax.set_ylabel("North")
@@ -102,6 +91,4 @@ def export_burnt_map(raster_path, vector_file, mmu, image_out, place_name=None):
     )
     plt.savefig(image_out)
 
-    print(
-        f"Saved Burnt Area Map to: {Path(image_out).resolve()}"
-    )
+    print(f"Saved Burnt Area Map to: {Path(image_out).resolve()}")

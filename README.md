@@ -29,8 +29,9 @@ The workflow employs a simple multi-temporal burnt area detection algorithm. The
 
 ## Outputs
 
-Main output is a map where the burnt area is overlayed over the postfire-dataset. Here is an example (burn scar boundaries in cyan):
-![Burnt Area Map](/src/burnt_area_false_color_segmented.jpg "Burnt Area Map")
+Main output is a map where the burnt area is overlayed over the postfire-dataset. Here are some examples (burn scar boundaries in cyan):
+![Burnt Area Map](/src/burnt_area_false_color_segmented_Alpha_Road_Tambaroora.jpg "Burnt Area Map")
+![Burnt Area Map](/src/burnt_area_false_color_segmented_Chip_Lake_Alberta.jpg "Burnt Area Map")
 
 ## How to run the Burnt Area Mapper using Docker (example):
 

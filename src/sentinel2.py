@@ -475,6 +475,9 @@ def read_product_s2(
             img_path = band_path_google(product_id, band_name)
             add_offset, scale_factor = offset_scale_google(product_id)
 
+        if band_name == "SCL":
+            add_offset, scale_factor = 0, 1
+
         # read image with bounds as reading window
         img, transform, img_epsg = geo.read_bounds(
             img_path, bounds, bounds_epsg=4326, snap_pixel_size=20
@@ -483,7 +486,7 @@ def read_product_s2(
         # conversion to reflectances
         img = (img.squeeze() + add_offset) * scale_factor
 
-        data_orig[band_name] = img
+        data_orig[band_name] = img.astype("float32")
 
     # 20m band, e.g. B12: resample to 10m (by efficient numpy repeat)
     data = {}
@@ -513,3 +516,10 @@ def read_product_s2(
                 )
 
     return data, transform, img_epsg
+
+
+def date_from_product_id(product_id):
+    date_str = product_id.split("_")[2]
+    isodate = str(datetime.datetime.strptime(date_str[:8], "%Y%m%d"))[:10]
+
+    return isodate
