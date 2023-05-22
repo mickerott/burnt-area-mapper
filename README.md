@@ -17,7 +17,7 @@ The base method, delta NBR using the classical NBR index, is implemented as desc
 
 Using Sentinel-2 image bands, this means we use the following formula for NBR:
 
-![NBR](src/nbr_formula.jpg "NBR")
+![NBR](src/nbr_formula.JPG "NBR")
 
 (García & Caselles, 1991)
 
